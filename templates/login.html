@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #5c6bc0;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 10px 0;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    background-color: #3949ab;
+}
+
+button {
+    background-color: #5c6bc0;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #3949ab;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+input[type="file"] {
+    color: #fff;
+}
+
+input[type="submit"] {
+    background-color: #2575fc;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #6a11cb;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #5c6bc0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #3949ab;
+}
+</style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

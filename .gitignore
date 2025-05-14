@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Model files
+*.h5
+models/
+
+# Uploaded images
+static/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

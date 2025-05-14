@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cervical Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Arial', sans-serif;
+    background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the page takes at least the full height of the viewport */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            flex-grow: 1; /* Ensures the container grows to take the remaining space */
+            padding-bottom: 60px; /* To prevent content from being hidden under the footer */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #5c6bc0;
+            border-radius: 5px;
+            font-size: 1.2em;
+            margin: 10px 0;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #3949ab;
+        }
+
+        button {
+            background-color: #5c6bc0;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px; /* Space between button and image */
+        }
+
+        button:hover {
+            background-color: #3949ab;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        input[type="file"] {
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            background-color: #2575fc;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6a11cb;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            border: 8px solid #fff; /* Add a white border around the image */
+            padding: 0px; /* Add some padding inside the border for spacing */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            position: relative;  /* Ensures footer does not overlap */
+            width: 100%;
+        }
+
+        .content-wrapper {
+            flex-grow: 1; /* Takes up all available space */
+            padding: 20px;
+            overflow-y: auto; /* Makes sure content can scroll */
+        }
+
+        .prediction-results {
+            display: flex;
+            justify-content: center; /* Centers the content horizontally */
+            align-items: center;
+            gap: 40px; /* Adds space between the image and prediction result */
+            margin-top: 20px;
+        }
+
+        .prediction-results img {
+            max-width: 45%;  /* Ensures the image doesn't take too much space */
+            height: auto;
+        }
+
+        .prediction-result {
+            max-width: 45%;  /* Ensures the prediction text doesn't take too much space */
+            text-align: left;
+        }
+
+        /* For better mobile responsiveness */
+        @media (max-width: 768px) {
+            .prediction-results {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .prediction-results img {
+                max-width: 80%; /* Adjust image size on smaller screens */
+            }
+
+            .prediction-result {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Cervical Cancer Prediction</h2>
+            <form method="POST" action="{{ url_for('cervical_cancer_prediction') }}" enctype="multipart/form-data">
+                <label for="file">Upload an Image:</label>
+                <input type="file" name="file" id="file" required><br>
+                <input type="submit" value="Upload">
+            </form>
+
+
+            {% if filename %}
+                <div class="prediction-results">
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+                    <div class="prediction-result">
+                        <h3>Prediction: {{ result }}</h3>
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- "Go to Index" Button to redirect to the home page -->
+            <center><button onclick="window.location.href='/'">Go to Index</button></center>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Cancer Prediction System. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
